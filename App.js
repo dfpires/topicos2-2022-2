@@ -6,6 +6,11 @@ import Contador from './components/Contador'
 import Comp1, {Comp2, Comp3} from './components/MultiComponente'
 import MenorMaior from './components/MenorMaior'
 import Aleatorio from './components/Aleatorio'
+import PaiD from './components/direta/Pai'
+import PaiID from './components/indireta/Pai'
+import Familia from './components/relacao/Familia'
+import Membro from './components/relacao/Membro'
+
 export default () => {
   
   return (
@@ -20,6 +25,20 @@ export default () => {
       <Comp3/>
       <MenorMaior msenor='5' maior='9'/>
       <Aleatorio menor={10} maior={20}/>
+      <PaiD />
+      <PaiID />
+      <Familia>
+        <Membro nome="Zeca" sobrenome="Silva"/>
+        <Membro nome="Pedro" sobrenome="Silva"/>
+        <Membro nome="João" sobrenome="Silva"/>
+      </Familia>
+      <Familia>
+        <Membro nome="Zeca" sobrenome="Oliveira"/>
+        <Membro nome="Pedro" sobrenome="Oliveira"/>
+        <Membro nome="João" sobrenome="Oliveira"/>
+        <Membro nome="Tulio" sobrenome="Oliveira"/>
+        <Membro nome="Juca" sobrenome="Oliveira"/>
+      </Familia>
     </SafeAreaView>
   )
 
