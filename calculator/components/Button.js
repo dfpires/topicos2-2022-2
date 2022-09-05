@@ -9,7 +9,7 @@ export default props => {
     stylesButton.push(styles.buttonDouble)
 
   return (
-    <TouchableHighlight>
+    <TouchableHighlight onPress={() => props.onClick(props.label)}>
 
       <Text style={stylesButton}> {props.label} </Text>
 
