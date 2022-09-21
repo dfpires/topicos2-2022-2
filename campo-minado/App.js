@@ -1,35 +1,52 @@
-import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
+import {Component} from 'react';
+import { View, StyleSheet } from 'react-native';
+import MineField from './components/MineField'
+import params from './params'
+import functions from './functions'
 
-// or any pure javascript modules available in npm
-import { Card } from 'react-native-paper';
+export default class App extends Component {
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.paragraph}>
-        Change code in the editor and watch it change on your phone! Save to get a shareable url.
-      </Text>
-      <Card>
-        
-      </Card>
-    </View>
-  );
+  constructor(props){
+    super(props)
+    this.state = this.createState()
+  }
+
+  minesAmount = () => {
+    const cols = params.getColumnsAmount()
+    const rows = params.getRowsAmount()
+    return Math.ceil(cols * rows * params.difficultLevel)
+  }
+
+  createState = () => {
+    const cols = params.getColumnsAmount()
+    const rows = params.getRowsAmount()
+    return {
+      board: createMinedBoard(rows, cols, this.minesAmount),
+      won: false,
+      lost: false,
+      showLevelSelection: false
+    }
+  }
+
+  render(){
+    return (
+      <View style={styles.container}>
+          <View style={styles.board}>
+            <MineField 
+            board={this.state.board} />
+          </View>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#ecf0f1',
-    padding: 8,
+    justifyContent: 'flex-end'
   },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
+  board: {
+    alignItems: 'center',
+    backgroundColor: '#AAA'
+  }
 });
