@@ -1,5 +1,5 @@
 
-createBoard = (rows, cols) => {
+const createBoard = (rows, cols) => {
   return Array(rows).fill(0).map((_, row) => {
     return Array(cols).fill(0).map((_, col) => {
       return {
@@ -15,7 +15,7 @@ createBoard = (rows, cols) => {
   })
 }
 
-spreadMines = (board, minesAmount) => {
+const spreadMines = (board, minesAmount) => {
   const rows = board.length
   const cols = board[0].length
   let minesPlanted = 0
@@ -29,8 +29,10 @@ spreadMines = (board, minesAmount) => {
   }
 }
 
-createMinedBoard = (rows, cols, minesAmount) => {
+const createMinedBoard = (rows, cols, minesAmount) => {
     const board = createBoard(rows, cols)
     spreadMines(board, minesAmount)
     return board
 }
+
+export {createMinedBoard}

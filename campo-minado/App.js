@@ -2,7 +2,7 @@ import {Component} from 'react';
 import { View, StyleSheet } from 'react-native';
 import MineField from './components/MineField'
 import params from './params'
-import functions from './functions'
+import {createMinedBoard} from './functions'
 
 export default class App extends Component {
 
@@ -32,8 +32,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
           <View style={styles.board}>
-            <MineField 
-            board={this.state.board} />
+            <MineField board={this.state.board} />
           </View>
       </View>
     );
